@@ -35,10 +35,37 @@ const arbitrumSepolia = {
   testnet: true,
 };
 
+const baseSepolia = {
+  id: ChainId.BaseSepolia,
+  name: 'Base Sepolia',
+  network: 'base-sepolia',
+  nativeCurrency: {
+    name: 'Ether',
+    symbol: 'ETH',
+    decimals: 18,
+  },
+  rpcUrls: {
+    default: {
+      http: [getRpcUrl(ChainId.BaseSepolia)],
+    },
+    public: {
+      http: [getRpcUrl(ChainId.BaseSepolia)],
+    },
+  },
+  blockExplorers: {
+    default: {
+      name: 'BaseScan',
+      url: getBlockExplorerUrl(ChainId.BaseSepolia),
+    },
+  },
+  testnet: true,
+};
+
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
     // Ideally, we wouldn't need to register the L1s, but there's currently an issue with WalletConnect v2: https://github.com/wagmi-dev/references/issues/225
     arbitrumSepolia,
+    baseSepolia
   ],
   [publicProvider()],
 );
@@ -46,7 +73,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
 const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID!;
 
 const appInfo = {
-  appName: 'Arbitrum Orbit',
+  appName: 'Arbitrum Orbit With Celestia Underneath',
   projectId,
 };
 

@@ -36,11 +36,18 @@ export default function ChainTypePage() {
   };
 
   return (
-    <div className="border-px flex min-h-[60vh] w-full flex-wrap border border-grey">
-      <div className="w-full overflow-y-auto rounded-md p-8  md:w-1/2">
+    <div className="border-px flex min-h-[60vh] w-full flex-wrap">
+      <div className="w-full overflow-y-auto rounded-md p-8  md:w-1/2 glass-effect-dark">
         <form onSubmit={handleSubmit} ref={pickChainFormRef}>
           <div className="flex flex-col gap-5">
-            <StepTitle>Choose Chain Type</StepTitle>
+            <StepTitle>Choose DA Solution</StepTitle>
+            <ChainTypePicker
+              selectedChainType={selectedChainType}
+              onClick={handleChainTypeChange}
+              chainType={ChainType.CelestiaDA}
+              label={'Celestia ✨'}
+              description="The first modular network that scales with the number of users, now integrated with Orbit with full fraud proof support!"
+            />
             <ChainTypePicker
               selectedChainType={selectedChainType}
               onClick={handleChainTypeChange}
@@ -61,12 +68,13 @@ export default function ChainTypePage() {
       </div>
       <div
         className={twMerge(
-          'w-full overflow-y-auto border-t border-solid border-grey bg-[#343434] p-8 md:w-1/2 md:border-l md:border-t-0',
-          !selectedChainType && 'bg-transparent',
+          'w-full overflow-y-auto border-t border-solid border-grey glass-effect-light p-8 md:w-1/2 md:border-l md:border-t-0',
+          !selectedChainType && 'glass-effect-light',
         )}
       >
         {selectedChainType === ChainType.AnyTrust && <AnyTrustInfoPanel />}
         {selectedChainType === ChainType.Rollup && <RollupInfoPanel />}
+        {selectedChainType === ChainType.CelestiaDA && <CelestiaDAInfoPanel />}
       </div>
     </div>
   );
@@ -98,5 +106,19 @@ const RollupInfoPanel = () => (
     gasFee="Typically $0.10-$0.30"
     exampleChain="Arbitrum One"
     logo={<Image src="/ArbOneLogo.svg" alt="Logo" width={20} height={18} />}
+  />
+);
+
+const CelestiaDAInfoPanel = () => (
+  <ChainTypeInfoPanel
+    header="Celestia DA through Blobstream ✨"
+    description="Blobstream is the first data availability solution for Ethereum that securely scales with the number of users. Formerly known as the Quantum Gravity Bridge (QGB), Blobstream relays commitments to Celestia's data root to an onchain light client on Ethereum, for integration by developers into L2 contracts. This enables Ethereum developers to build high-throughput L2s using Celestia's optimised DA layer, the first with Data Availability Sampling (DAS)"
+    dataAvailabilityLayer={<a
+      className="hover:underline"
+      href={"https://docs.celestia.org/developers/blobstream#what-is-blobstream"}
+    >Celestia DA through Blobstream <i className="pi pi-external-link ml-1 text-sm" /> </a>}
+    gasFee="Typically $0"
+    exampleChain="N/A"
+    logo={<Image src="/CelestiaLogo.svg" alt="Logo" width={20} height={18} />}
   />
 );

@@ -15,7 +15,7 @@ function DeploymentLayout({ children }: PropsWithChildren) {
   const { chain } = useNetwork();
   const { currentStep } = useStep();
 
-  const isWrongChain = chain?.id !== ChainId.ArbitrumSepolia;
+  const isWrongChain = chain?.id !== ChainId.ArbitrumSepolia && chain?.id !== ChainId.BaseSepolia;
 
   const shouldShowStepper = currentStep !== RaasProviders;
 

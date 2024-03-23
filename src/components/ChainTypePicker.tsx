@@ -19,8 +19,8 @@ export const ChainTypePicker: React.FC<ChainTypePickerProps> = ({
   return (
     <div
       className={twJoin(
-        'm-0 flex cursor-pointer flex-col justify-start gap-3 rounded border border-[#5E5E5E] bg-[#191919] p-4 py-6 pr-6  hover:bg-[#343434]',
-        selectedChainType === chainType && 'border-white bg-[#343434]',
+        'm-0 flex cursor-pointer flex-col justify-start gap-3 glass-effect-button hover:bg-[#343434]',
+        selectedChainType === chainType && 'border-white bg-[#99999]',
       )}
       onClick={() => {
         if (!chainType) return;
@@ -35,7 +35,7 @@ export const ChainTypePicker: React.FC<ChainTypePickerProps> = ({
         <div className="h-4 w-4 rounded-full bg-green"></div>
         <p className="text-sm">
           Transaction data posted{' '}
-          {chainType === ChainType.Rollup ? 'to Ethereum' : 'by a Data Availability Committee'}
+          {chainType === ChainType.Rollup ? 'to Ethereum' : chainType === ChainType.AnyTrust ? 'by a Data Availability Committee' : chainType === ChainType.CelestiaDA ? 'to Celestia' : ''}
         </p>
       </div>
     </div>

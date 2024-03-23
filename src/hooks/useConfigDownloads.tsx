@@ -1,4 +1,4 @@
-import { NodeConfig } from '@arbitrum/orbit-sdk';
+import { NodeConfig } from 'orbit-sdk-celestia';
 
 import { L3Config } from '@/types/L3Config';
 import { useEffect, useState } from 'react';

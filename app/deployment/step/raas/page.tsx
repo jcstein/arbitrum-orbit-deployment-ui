@@ -3,7 +3,7 @@ import { StepTitle } from '@/components/StepTitle';
 
 export default function RaasProvidersPage() {
   return (
-    <div className="rounded-md border border-solid border-grey p-8">
+    <div className="rounded-md border glass-effect-dark p-8">
       <div className="flex flex-col gap-6">
         <StepTitle>Rollup-as-a-Service Providers</StepTitle>
         <p className="text-sm font-light">
@@ -12,7 +12,7 @@ export default function RaasProvidersPage() {
           contracts, protocol modifications, and maintaining infrastructure.
         </p>
         {/* TODO: reactivate when page is ready */}
-        {/* <button className={twMerge(` w-36 rounded-sm bg-white p-2 text-lg text-black`)}> 
+        {/* <button className={twMerge(` w-36 rounded-sm bg-white p-2 text-lg text-black`)}>
           Get in touch
         </button> */}
         <h3 className="text-2xl font-light">Lean about the Providers</h3>

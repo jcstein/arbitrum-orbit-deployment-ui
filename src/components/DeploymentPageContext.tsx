@@ -1,5 +1,5 @@
 'use client';
-import { CoreContracts } from '@arbitrum/orbit-sdk';
+import { CoreContracts } from 'orbit-sdk-celestia';
 import { Wallet } from '@/types/RollupContracts';
 import { RollupConfig } from '@/types/rollupConfigDataType';
 import {
@@ -12,7 +12,7 @@ import {
   useRef,
 } from 'react';
 import { useAccount } from 'wagmi';
-import { generateChainId } from '@arbitrum/orbit-sdk/utils';
+import { generateChainId } from 'orbit-sdk-celestia/utils';
 import { ChainType } from '@/types/ChainType';
 import { RollupConfigFormValues } from '../../app/deployment/step/configure/page';
 
@@ -45,6 +45,17 @@ const generateDefaultRollupConfig: () => RollupConfig = () => ({
     delaySeconds: 86400,
     futureSeconds: 3600,
   },
+  celestiaConfig: {
+    enable: false,
+    rpc: '',
+    tendermint_rpc: '',
+    namespace_id: '',
+    auth_token: '',
+    is_poster: false,
+    gas_price: 0,
+    event_channel_size: 0,
+    blobstreamx_address: '',
+  }
 });
 
 function getDefaultRollupConfig(owner: string = '') {
@@ -93,7 +104,7 @@ type DeploymentPageContextValue = [
 
 export const DeploymentPageContext = createContext<DeploymentPageContextValue>([
   getDeploymentPageContextStateInitialValue(),
-  () => {},
+  () => { },
   {},
 ]);
 

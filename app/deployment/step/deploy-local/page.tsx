@@ -49,7 +49,7 @@ export default function DeployLocallyPage() {
   );
 
   return (
-    <div className="flex flex-col gap-5 border border-solid border-grey p-8">
+    <div className="flex flex-col gap-5 border glass-effect-dark p-8">
       <StepTitle>Deploy Locally</StepTitle>
       <p>
         Once you've downloaded both config files, please follow the steps below to complete local

@@ -9,10 +9,10 @@ import { useConfigDownloads } from '@/hooks/useConfigDownloads';
 export default function DownloadPage() {
   const { rollupConfigDownloadData, rollupConfigDisplayData, l3Config, downloadZippedConfigs } =
     useConfigDownloads();
-  const [{}, dispatch] = useDeploymentPageContext();
+  const [{ }, dispatch] = useDeploymentPageContext();
 
   return (
-    <div className="rounded-md border border-solid border-grey p-8">
+    <div className="rounded-md border glass-effect-dark p-8">
       <div className="flex flex-col gap-3">
         <StepTitle>Download Config</StepTitle>
         <p className="my-1">Configuration files are required to deploy locally.</p>

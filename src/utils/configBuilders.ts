@@ -1,6 +1,6 @@
 import { parseEther, GetFunctionArgs } from 'viem';
-import { ChainConfig, CoreContracts } from '@arbitrum/orbit-sdk';
-import { rollupCreator } from '@arbitrum/orbit-sdk/contracts';
+import { ChainConfig, CoreContracts } from 'orbit-sdk-celestia';
+import { rollupCreator } from 'orbit-sdk-celestia/contracts';
 
 import { Wallet } from '@/types/RollupContracts';
 import { L3Config } from '@/types/L3Config';

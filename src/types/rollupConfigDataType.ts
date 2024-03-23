@@ -1,3 +1,5 @@
+import { CelestiaConfig } from "orbit-sdk-celestia";
+
 export type RollupConfig = {
   confirmPeriodBlocks: number;
   stakeToken: string;
@@ -17,4 +19,5 @@ export type RollupConfig = {
     delaySeconds: number;
     futureSeconds: number;
   };
+  celestiaConfig?: CelestiaConfig;
 };

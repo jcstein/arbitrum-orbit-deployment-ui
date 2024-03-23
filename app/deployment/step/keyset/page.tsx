@@ -1,7 +1,7 @@
 'use client';
 
 import { useAccount, usePublicClient, useWalletClient } from 'wagmi';
-import { setValidKeyset } from '@arbitrum/orbit-sdk';
+import { setValidKeyset } from 'orbit-sdk-celestia';
 
 import { useStep } from '@/hooks/useStep';
 import { assertIsAddress } from '@/utils/validators';
@@ -47,7 +47,7 @@ export default function KeysetPage() {
   };
 
   return (
-    <div className="border-px flex flex-col gap-4 rounded-md border border-grey p-8">
+    <div className="border-px flex flex-col gap-4 rounded-md glass-effect-dark p-8">
       <StepTitle>Configure Keyset</StepTitle>
       <p>
         A Keyset specifies the public keys of Committee members and the number of signatures
@@ -56,7 +56,7 @@ export default function KeysetPage() {
       </p>
       <h3 className="underline">Default Keyset</h3>
       <div>
-        <pre className="whitespace-pre-wrap break-all rounded bg-[#DADADA] p-2 text-[#6D6D6D]">
+        <pre className="whitespace-pre-wrap break-all rounded glass-effect-light p-2 text-[#99999]">
           {DEFAULT_KEYSET_STRING}
         </pre>
       </div>

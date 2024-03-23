@@ -19,11 +19,13 @@ import { getRandomWallet } from '@/utils/getRandomWallet';
 import { AddressSchema, PrivateKeySchema } from '@/utils/schemas';
 import { compareWallets } from '@/utils/wallets';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { ChainType } from '@/types/ChainType';
 
 const WalletSchema = z.object({
   address: AddressSchema,
   privateKey: PrivateKeySchema,
 });
+
 const rollupConfigSchema = z.object({
   chainId: z.number().gt(0),
   chainName: z.string().nonempty(),
@@ -50,7 +52,10 @@ const rollupConfigSchema = z.object({
   batchPoster: WalletSchema,
 });
 
+
+
 export type RollupConfigFormValues = z.infer<typeof rollupConfigSchema>;
+
 
 export default function RollupConfigPage() {
   const [{ rollupConfig, chainType, validators: savedWallets, batchPoster }, dispatch] =
@@ -94,6 +99,7 @@ export default function RollupConfigPage() {
 
   const onSubmit = async (updatedRollupConfig: RollupConfigFormValues) => {
     const updatedValidators = compareWallets(wallets, updatedRollupConfig.addresses);
+    console.log("Updated Validators")
     const updatedBatchPoster = updatedRollupConfig.batchPoster;
 
     try {
@@ -111,6 +117,7 @@ export default function RollupConfigPage() {
       });
 
       dispatch({ type: 'set_is_loading', payload: true });
+      console.log("Dispatched Steps")
       if (!walletClient || !address) return;
       const rollupArgs = {
         rollupConfig: {
@@ -138,8 +145,8 @@ export default function RollupConfigPage() {
   return (
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)} ref={rollupConfigFormRef}>
-        <div className="border-px flex flex-wrap rounded-md border border-grey">
-          <div className="hide-scrollbar flex w-full flex-col gap-2 overflow-y-scroll p-8 md:h-[80vh] md:w-1/2">
+        <div className="border-px flex flex-wrap rounded-md">
+          <div className="hide-scrollbar flex w-full flex-col gap-2 overflow-y-scroll p-8 md:h-[80vh] md:w-1/2 glass-effect-dark">
             <StepTitle className="mb-4">Review & Deploy</StepTitle>
             <TextInputWithInfoLink
               label="Chain ID"
@@ -207,7 +214,7 @@ export default function RollupConfigPage() {
             <SetValidators {...{ wallets, setWalletCount, walletCount, setWallets }} />
             <SetBatchPoster />
           </div>
-          <div className="border-px h-[80vh] w-full  border-t border-grey p-8 md:w-1/2 md:border-l md:border-t-0">
+          <div className="border-px h-[80vh] w-full  border-t border-grey p-8 md:w-1/2 md:border-l md:border-t-0 glass-effect-light">
             <DocsPanel />
           </div>
         </div>

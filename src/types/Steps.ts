@@ -21,6 +21,7 @@ export const ConfigureRollup = {
   label: 'Configure Chain',
 } as const;
 
+
 export const ConfigureAnyTrust = {
   id: StepIds.ConfigureChain,
   next: StepIds.ConfigureKeyset,

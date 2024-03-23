@@ -7,7 +7,8 @@ import {
   createRollupPrepareCustomFeeTokenApprovalTransactionRequest,
   createRollupPrepareTransactionRequest,
   createRollupPrepareTransactionReceipt,
-} from '@arbitrum/orbit-sdk';
+  CelestiaConfig
+} from 'orbit-sdk-celestia';
 
 import { ChainType } from '@/types/ChainType';
 import { Wallet } from '@/types/RollupContracts';
@@ -26,7 +27,9 @@ type DeployRollupProps = {
   walletClient: WalletClient;
   chainType?: ChainType;
   account: Address;
+  celestiaConfig?: CelestiaConfig;
 };
+
 
 export async function deployRollup({
   rollupConfig,
@@ -36,15 +39,17 @@ export async function deployRollup({
   walletClient,
   account,
   chainType = ChainType.Rollup,
+  celestiaConfig,
 }: DeployRollupProps): Promise<CoreContracts> {
   try {
     assertIsAddress(rollupConfig.owner);
-
+    console.log("Sending deployment tx");
     const chainConfig = prepareChainConfig({
       chainId: rollupConfig.chainId,
       arbitrum: {
         InitialChainOwner: rollupConfig.owner,
         DataAvailabilityCommittee: chainType === ChainType.AnyTrust,
+        CelestiaDA: chainType === ChainType.CelestiaDA,
       },
     });
     const rollupConfigPayload = buildRollupConfigPayload({ rollupConfig, chainConfig });
@@ -89,7 +94,8 @@ export async function deployRollup({
     const txRequest = await createRollupPrepareTransactionRequest({
       params: {
         config: rollupConfigPayload,
-        batchPoster: batchPosterAddress,
+        batchPosters: [batchPosterAddress],
+        batchPosterManager: rollupConfig.owner, // defaulting to the same address as the batch poster
         validators: validatorAddresses,
         nativeToken,
       },
@@ -105,6 +111,19 @@ export async function deployRollup({
 
     const coreContracts = txReceipt.getCoreContracts();
 
+    if (chainType === ChainType.CelestiaDA) {
+      console.log("Its CELESTIA DA BABY")
+      if (celestiaConfig) {
+        celestiaConfig.enable = true;
+        celestiaConfig.rpc = 'http://localhost:26658';
+        celestiaConfig.tendermint_rpc = 'rpc.celestia-mocha.com';
+        celestiaConfig.namespace_id = '000008e5f679bf7116cb';
+        celestiaConfig.gas_price = 0.1;
+        celestiaConfig.auth_token = '';
+        celestiaConfig.event_channel_size = 100;
+        celestiaConfig.blobstreamx_address = '0xc3e209eb245Fd59c8586777b499d6A665DF3ABD2'
+      }
+    }
     const nodeConfig = prepareNodeConfig({
       chainName: rollupConfig.chainName,
       chainConfig,
@@ -113,6 +132,17 @@ export async function deployRollup({
       validatorPrivateKey: validators[0].privateKey || '',
       parentChainId,
       parentChainRpcUrl: getRpcUrl(parentChainId),
+      celestiaConfig: chainType === ChainType.CelestiaDA ? {
+        enable: true,
+        is_poster: true,
+        rpc: 'http://localhost:26658',
+        tendermint_rpc: 'rpc.celestia-mocha.com',
+        namespace_id: '000008e5f679bf7116cb',
+        gas_price: 0.1,
+        auth_token: '',
+        event_channel_size: 100,
+        blobstreamx_address: '0xc3e209eb245Fd59c8586777b499d6A665DF3ABD2'
+      } : undefined
     });
 
     // Defining L3 config

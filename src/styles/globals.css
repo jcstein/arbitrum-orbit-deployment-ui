@@ -3,19 +3,97 @@
 @tailwind utilities;
 
 .select-wrapper::after {
-  @apply pointer-events-none absolute right-0 px-4 text-2xl leading-5; /* Adjust size and line-height here */
+  @apply pointer-events-none absolute right-0 px-4 text-2xl leading-5;
+  /* Adjust size and line-height here */
   top: 50%;
   transform: translateY(-80%);
   content: '⌄';
 }
 
+.glass-effect-dark {
+  background: rgba(0, 0, 0, 0.6);
+  /* Adjust the alpha value for more or less transparency */
+  border-radius: 10px;
+  /* Rounded corners */
+  padding: 2em;
+  /* Padding around content */
+  backdrop-filter: blur(10px);
+  /* Creates the blur effect */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Optional: Adds a subtle shadow to lift the element off the page */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  /* Optional: Adds a subtle border to the element */
+}
+
+
+.glass-effect-light {
+  background: rgba(50, 50, 50, 0.6);
+  /* Adjust the alpha value for more or less transparency */
+  border-radius: 10px;
+  /* Rounded corners */
+  padding: 2em;
+  /* Padding around content */
+  backdrop-filter: blur(10px);
+  /* Creates the blur effect */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Optional: Adds a subtle shadow to lift the element off the page */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  /* Optional: Adds a subtle border to the element */
+}
+
+.glass-effect-button {
+  background: rgba(100, 100, 100, 0.2);
+  /* Adjust the alpha value for more or less transparency */
+  border-radius: 10px;
+  /* Rounded corners */
+  padding: 2em;
+  /* Padding around content */
+  backdrop-filter: blur(10px);
+  /* Creates the blur effect */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Optional: Adds a subtle shadow to lift the element off the page */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  /* Optional: Adds a subtle border to the element */
+}
+
+.glass-effect-panel {
+  background: rgba(0, 0, 0, 0.4);
+  /* Adjust the alpha value for more or less transparency */
+  border-radius: 10px;
+  /* Rounded corners */
+  padding: 2em;
+  /* Padding around content */
+  backdrop-filter: blur(10px);
+  /* Creates the blur effect */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Optional: Adds a subtle shadow to lift the element off the page */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  /* Optional: Adds a subtle border to the element */
+}
+
 html {
   @apply text-white;
-  background: url('/grainient.png') no-repeat;
-  background-size: cover;
   min-height: 100%;
+  height: 100%;
   background-color: black;
+  position: relative;
+  overflow: auto;
 }
+
+html::before {
+  content: '';
+  position: fixed;
+  /* Use 'fixed' to cover the entire viewport and allow content to scroll */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/Celestia_clear_bg.jpg') no-repeat center center;
+  background-size: cover;
+  filter: blur(8px);
+  z-index: -1;
+}
+
 
 select,
 input {
@@ -41,6 +119,7 @@ input {
   from {
     background-color: #5e5e5e;
   }
+
   to {
     background-color: transparent;
   }

@@ -36,7 +36,7 @@ export function DeploymentSummary() {
         {rollupContracts && (
           <div>
             <p className="mb-2 text-xl font-light">Rollup Contracts</p>
-            <ul className="flex flex-col gap-3 rounded-sm border border-[#5E5E5E] bg-[#191919] p-4">
+            <ul className="flex flex-col gap-3 rounded-sm border glass-effect-light p-4">
               <li className="flex flex-col" key={rollupContracts.rollup}>
                 <span className="text-sm font-medium">Rollup address:</span>
                 <BlockExplorerLink href={`${blockExplorerUrl}/address/${rollupContracts.rollup}`}>
@@ -123,7 +123,7 @@ export function DeploymentSummary() {
         {validators.length > 0 && (
           <div>
             <p className="mb-2 text-xl font-light">Validators</p>
-            <ul className="flex flex-col gap-3 rounded-sm border border-[#5E5E5E] bg-[#191919] p-4">
+            <ul className="flex flex-col gap-3 rounded-sm border glass-effect-light p-4">
               {validators.map((validator, index) => (
                 <li className="flex flex-col" key={validator.address}>
                   <BlockExplorerLink href={`${blockExplorerUrl}/address/${validator.address}`}>
@@ -137,7 +137,7 @@ export function DeploymentSummary() {
         {batchPoster && (
           <div>
             <p className="mb-2 text-xl font-light">Batch Poster</p>
-            <ul className="flex flex-col gap-3 rounded-sm border border-[#5E5E5E] bg-[#191919] p-4">
+            <ul className="flex flex-col gap-3 rounded-sm border glass-effect-light p-4">
               <li className="flex flex-col" key={batchPoster.address}>
                 <BlockExplorerLink href={`${blockExplorerUrl}/address/${batchPoster.address}`}>
                   {batchPoster.address}
