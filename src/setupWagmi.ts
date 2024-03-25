@@ -39,6 +39,7 @@ const baseSepolia = {
   id: ChainId.BaseSepolia,
   name: 'Base Sepolia',
   network: 'base-sepolia',
+  iconUrl: "https://altcoinsbox.com/wp-content/uploads/2023/02/base-logo-in-blue.png",
   nativeCurrency: {
     name: 'Ether',
     symbol: 'ETH',
