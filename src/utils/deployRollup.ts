@@ -124,6 +124,7 @@ export async function deployRollup({
         is_poster: true,
         rpc: 'http://localhost:26658',
         tendermint_rpc: 'rpc.celestia-mocha.com',
+        eth_rpc: '',
         namespace_id: '000008e5f679bf7116cb',
         gas_price: 0.1,
         auth_token: '',

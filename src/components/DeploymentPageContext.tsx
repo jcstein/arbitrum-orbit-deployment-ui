@@ -49,6 +49,7 @@ const generateDefaultRollupConfig: () => RollupConfig = () => ({
     enable: false,
     rpc: '',
     tendermint_rpc: '',
+    eth_rpc: '',
     namespace_id: '',
     auth_token: '',
     is_poster: false,
