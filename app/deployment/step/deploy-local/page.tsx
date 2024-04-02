@@ -67,10 +67,10 @@ export default function DeployLocallyPage() {
         <li>
           Clone the{' '}
           <ExternalLink
-            href="https://github.com/OffchainLabs/orbit-setup-script"
+            href="https://github.com/celestiaorg/orbit-setup-script"
             className="underline"
           >
-            https://github.com/OffchainLabs/orbit-setup-script
+            https://github.com/celestiaorg/orbit-setup-script
           </ExternalLink>{' '}
           repository, and run:
           <br />
@@ -109,7 +109,7 @@ export default function DeployLocallyPage() {
           in the following command, and run it: <br />
           <br />
           <CodeSnippet
-            code={`PRIVATE_KEY="0xYourPrivateKey" L2_RPC_URL="${parentChainRpcUrl}" L3_RPC_URL="http://127.0.0.1:8449" yarn run setup`}
+            code={`PRIVATE_KEY="YourPrivateKey" L2_RPC_URL="${parentChainRpcUrl}" L3_RPC_URL="http://127.0.0.1:8449" yarn run setup`}
           />
         </li>
         <br />
