@@ -2098,6 +2098,15 @@ cbor@^9.0.0:
   dependencies:
     nofilter "^3.1.0"
 
+celestia-orbit-sdk@^0.8.4:
+  version "0.8.4"
+  resolved "https://registry.npmjs.org/celestia-orbit-sdk/-/celestia-orbit-sdk-0.8.4.tgz"
+  integrity sha512-wDruVMLet5oXcmK7XJXLQAe02yQudmq6ZJ57UuK4EOJqBVLzcsi1jef1YQIbVVq6cbubktYWYdwI898zD6Ek3A==
+  dependencies:
+    "@arbitrum/sdk" "^3.2.0"
+    "@arbitrum/token-bridge-contracts" "^1.2.1"
+    ethers "^5.7.2"
+
 chalk@^4.0.0, chalk@^4.1.0, chalk@^4.1.1, chalk@^4.1.2:
   version "4.1.2"
   resolved "https://registry.npmjs.org/chalk/-/chalk-4.1.2.tgz"
@@ -4445,15 +4454,6 @@ optionator@^0.9.1:
     prelude-ls "^1.2.1"
     type-check "^0.4.0"
     word-wrap "^1.2.3"
-
-orbit-sdk-celestia@^0.8.5:
-  version "0.8.5"
-  resolved "https://registry.yarnpkg.com/orbit-sdk-celestia/-/orbit-sdk-celestia-0.8.5.tgz#a166b263960a69ae98f1ee592bfee7666fb390d0"
-  integrity sha512-6ZM34mb1gFA+NkpjckmW+kg+U+b17oHikgnShukC8GWM5uaXUGm336JWQEe8u/VrVFCvlOTDNAVa9e7oXAObFg==
-  dependencies:
-    "@arbitrum/sdk" "^3.2.0"
-    "@arbitrum/token-bridge-contracts" "^1.2.1"
-    ethers "^5.7.2"
 
 os-tmpdir@~1.0.2:
   version "1.0.2"

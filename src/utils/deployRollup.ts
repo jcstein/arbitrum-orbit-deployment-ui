@@ -8,7 +8,7 @@ import {
   createRollupPrepareTransactionRequest,
   createRollupPrepareTransactionReceipt,
   CelestiaConfig
-} from 'orbit-sdk-celestia';
+} from 'celestia-orbit-sdk';
 
 import { ChainType } from '@/types/ChainType';
 import { Wallet } from '@/types/RollupContracts';
